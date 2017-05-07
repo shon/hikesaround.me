@@ -1,0 +1,43 @@
+extends layout
+
+block main
+
+  .content
+    | {% for event in events %}
+    .event.row
+      .small-4.large-2.columns.cal-date
+        .month {{event['start_time'].strftime('%B')}}
+        .date {{event['start_time'].day}}
+        .day {{event['start_time'].strftime('%A')}}
+      .small-8.large-10.columns.event-info
+        .row.event-title
+          h3
+            a(href="/events/{{event['id']}}")
+              | {{event['name']}}
+        .row
+          .subheader 
+            | By &nbsp;
+            a(href="/biz/{{event['owner']['id']}}") {{event['owner']['name']}}
+    .row
+      hr
+    | {% endfor %}
+
+    .row
+      .large-12.columns
+        h4(data-bind="text: 'Events found elsewhere', if=otherevents.length")
+        hr
+
+    .otherevents(data-bind="foreach: otherevents")
+      .row
+        .large-1.columns
+          strong(data-bind="text: date_s")
+        .large-11.columns
+          a(data-bind="attr: {href: link}, text: title", target="_blank")
+
+    .row
+      hr
+
+
+
+block main-script
+  include js/index.js

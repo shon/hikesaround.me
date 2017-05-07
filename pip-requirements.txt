@@ -1,0 +1,14 @@
+git+https://github.com/shon/appbase.git
+arrow
+dateparser
+flask
+gevent
+redis
+psycopg2
+html2text
+blinker
+jsonschema
+feedparser
+facebook-sdk
+python-dateutil
+converge

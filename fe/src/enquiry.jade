@@ -1,0 +1,35 @@
+extends layout
+
+block title
+  | Write the organizer
+
+block post-jslibs
+  script(src='https://www.google.com/recaptcha/api.js')
+
+block main
+  .row
+    .large-6.columns
+      h1 Enquiry form
+      hr
+
+  .content.row
+
+    .large-8.columns
+      form#enquiry-form
+        h6#enq-to
+        h6#enq-subject
+
+        input#name(name='sender_name', type='text', placeholder='Your Name', minlength='2', required)
+        input#name(name='sender_email', type='email', placeholder='Your Email Address', required)
+        textarea(name='query', placeholder='Write your query here..', rows=5, required)
+
+
+        // .g-recaptcha(data-sitekey="6LcDWf8SAAAAAIoTztvboUHDYefAG-NnObMP2jnU")
+
+        // label Things to bring
+        div(data-bind='if: error')
+          small.error(data-bind='text: error') 
+        input.button#enquiry-btn(type='submit', value='+Send', data-bind='attr: {value: status}')
+
+block main-script
+  include js/enquiry.js

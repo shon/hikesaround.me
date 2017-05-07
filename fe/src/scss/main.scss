@@ -1,0 +1,57 @@
+$bg-color: white;
+$bg-color-form: white;
+$color: black;
+$light-color: gray;
+
+// $bg-color: rgba(249, 218, 75, 0.8);
+// $bg-color-form: lighten(rgba(249, 218, 75, 0.8), 10%);
+$light-color: lighten(darkcyan, 10%);
+$color: darkcyan;
+$dark-color: black;
+
+html.busy, html.busy * {  
+    cursor: wait !important;  
+} 
+
+body {
+    background-color: $bg-color;
+    color: $color;
+}
+
+::placeholder {
+    color: $color;
+}
+
+body form input[name], select, option, textarea {
+    background-color: $bg-color;
+    color: $color;
+    border-color: $color;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+label { color: $color; }
+
+hr { border-top: 1px solid $color; }
+
+pre { white-space: pre-line; }
+
+.pre { white-space: pre-wrap; }
+
+.cal-date {
+    .month { font-weight: bold; }
+    text-align: center;
+    .date {
+        font-size: 2em;
+        text-align: center;
+    }
+}
+
+[class*="foundicon-"] {
+    color: gray; 
+}
+
+[class*="foundicon-"]:hover {
+    color: black;
+}

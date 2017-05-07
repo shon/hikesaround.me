@@ -1,0 +1,72 @@
+extends layout
+
+block title
+  | {{biz.name}}
+
+block main
+  .content
+    .row
+      .large-12.columns
+        h2 {{biz.name}}
+        | {% if biz.location %}
+        address 
+          | {% if biz.location.street %}
+          {{biz.location.street}}
+          br
+          | {% endif %}
+          {{biz.location.city}}
+          | {% endif %}
+        hr
+    .row
+      .large-6.columns
+        .row
+          | {% if biz.phone %}
+          .large-1.columns.fi-telephone
+          .large-10.columns {{biz.phone}}
+          | {% endif %}
+      .large-6.columns
+        .row
+          | {% if biz.link %}
+          .large-1.columns.fi-social-facebook 
+          .large-10.columns 
+            a(href='{{biz.link}}') Facebook
+          | {% endif %}
+    .row
+      .large-6.columns
+        .row
+          .large-1.columns.fi-mail
+          .large-10.columns
+            | {% if biz.emails %}
+            a(href='mailto:{{biz.emails[0]}}?Subject=[hikesaround.me]%20') {{biz.emails[0]}}
+            | {% else %}
+            c No email provided :(
+            | {% endif %}
+      .large-6.columns
+        .row
+          | {% if biz.website %}
+          .large-1.columns.fi-web
+          .large-10.columns
+            a(href='http://{{biz.website}}') {{biz.website}}
+          |{% endif %}
+      hr
+    | {% if biz.cover %}
+    .row
+        .large-12.columns
+            img(src="{{biz.cover.source}}")
+    |{% endif %}
+    .row
+      .large-12.columns
+        | {% if biz.about %}
+        p.pre {{biz.about}}
+        |{% endif %}
+        | {% if biz.company_overview %}
+        br
+        p.pre {{biz.company_overview}}
+        |{% endif %}
+        hr
+
+block ga
+  +google-analytics('UA-51914996-2', 'hikesaround.me')
+
+// block main-script
+//  include js/index.js

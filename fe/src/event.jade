@@ -1,0 +1,105 @@
+extends layout
+
+block title
+  | HikesAround.Me | {{event.name}}
+
+block meta
+  +og-meta('description', "{{event.description}}")
+  +og-meta('image', '{{event.picture_url}}')
+
+block main
+
+  .content
+    .row
+      .large-12.columns
+        .row
+          .large-10.columns
+            h1
+              {{event.name}}
+
+
+
+        .row
+          .large-7.columns
+            h4
+              .subheader
+                a(href="/biz/{{host.id}}") {{host.name}}
+          .large-3.columns.right
+            a(href="tel:{{host.phone}}")
+              i.fi-telephone 
+              | {{host.phone}}
+          .large-2.columns.right
+            a#enquiry-email(href="/enquiry.html")
+              i.fi-mail
+              |  Email
+
+        hr
+
+        | {% if event.picture_url %}
+        .row
+          .large-12.columns
+            img(src="{{event.picture_url}}", width="100%")
+        | {% endif %}
+
+        .row
+          .large-4.columns
+            .subheader Location
+            | {% if event.venue %}
+            h4 {{event.venue.city or event.venue.name}}
+            | {% endif %}
+          .large-8.columns
+            .row
+              .large-12.columns
+                .subheader Duration
+                h5 
+                  | {{((event.end_time - event.start_time).days and '%d Day(s)' % (event.end_time - event.start_time).days) or ''}}
+                  | {{((event.end_time - event.start_time).seconds / 3600) and '%d Hour(s)' % ((event.end_time - event.start_time).seconds / 3600) or ''}}
+            .row
+              .large-6.columns
+                h5
+                .subheader Starts
+                {{event.start_time.strftime('%A %b %d %I:%M%p')}}
+              .large-6.columns
+                .subheader Ends
+                {{event.end_time.strftime('%A %b %d %I:%M%p')}}
+
+        .row
+          .large-7.columns
+            h4
+              .subheader
+                a(href="/biz/{{host.id}}") {{host.name}}
+
+          .large-3.columns.right
+            a(href="tel:{{host.phone}}")
+              i.fi-telephone 
+              | {{host.phone}}
+          .large-2.columns.right
+            a#enquiry-email(href="/enquiry.html")
+              i.fi-mail
+              |  Email
+
+
+        hr
+
+        .row
+          .large-12.columns
+            h4 Details
+            p.pre {{event.description}}
+
+        hr
+
+        .row
+          .large-4.columns
+            .subheader Share
+          .large-4.columns
+            a(href="http://hikesaround.me/events/{{event.id}}")
+              h3.fi-social-facebook
+          .large-4.columns
+
+
+
+block ga
+  +google-analytics('UA-51914996-2', 'hikesaround.me')
+
+block main-script
+  include js/trek.js

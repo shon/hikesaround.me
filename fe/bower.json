@@ -1,0 +1,25 @@
+{
+  "name": "ham",
+  "version": "0.0.1",
+  "moduleType": [
+    "node"
+  ],
+  "license": "Proprietary",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "foundation-icon-fonts": "*",
+    "knockoutjs": "~3.3.0",
+    "underscore": "~1.8.2"
+  },
+  "resolutions": {
+    "jquery": ">= 2.1.0"
+  }
+}
