@@ -22,7 +22,7 @@ def get_app_access_token(app_id, app_secret):
 token = get_app_access_token(FACEBOOK_APP_ID, FACEBOOK_APP_SECRET)
 graph = facebook.GraphAPI(access_token=token)
 
-event_fields = 'description, start_time, venue, end_time, id, name, owner'
+event_fields = 'description, start_time, place, end_time, id, name, owner'
 host_fields = 'name, id, phone, website, link, location, emails, cover, about, company_overview'
 
 
@@ -62,6 +62,7 @@ def get_object(oid, fields=None):
         o['picture_url'] = get_picture_url(oid)
         #print(o['name'], o['picture_url'])
     return o
+
 
 def pull_events(fbid, limit=100):
     result = graph.get_connections(fbid, 'events')

@@ -44,8 +44,8 @@ block main
         .row
           .large-4.columns
             .subheader Location
-            | {% if event.venue %}
-            h4 {{event.venue.city or event.venue.name}}
+            | {% if event.place %}
+            h4 {{event.place.location.city or event.place.name}}
             | {% endif %}
           .large-8.columns
             .row
