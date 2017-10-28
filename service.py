@@ -24,6 +24,7 @@ def set_routes(app):
 
     app.add_url_rule('/events/<id>', None, pages.view_trek, methods=['GET'])
     app.add_url_rule('/biz/<id>', None, pages.view_biz, methods=['GET'])
+    app.add_url_rule('/manifest.json', None, pages.manifest, methods=['GET'])
     app.add_url_rule('/', None, pages.feed, methods=['GET'])
 
 
