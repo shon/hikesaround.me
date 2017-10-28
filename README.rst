@@ -7,6 +7,8 @@ setup
     pip install -r pip-requirements.txt
     cd fe
     npm install
+    cp dev-settings.py settings.py
+    # Add Facebook App Id and App Secret
 
 build
 -----
